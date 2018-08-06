@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>BEATLES</title>
+
+    <script src='http://fe.it-academy.by/JQ/jquery.js'></script>
+    <script src='http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'></script>
+  </head>
+
+
+
+  <body>
+    <style>
+      .SAlbums td { padding: 10px 20px 10px 0; vertical-align: top }
+
+      .SName span { font-weight: bold }
+      .SName { color: blue; width: 180px; padding-left: 20px; text-indent: -20px }
+
+      .SYear { color: green }
+      .SYear span { font-weight: bold }
+
+      .SPlace { color: red }
+      .SPlace span { font-weight: bold }
+    </style>
+
+    <table class='SAlbums'></table>
+    
+    <script id='BeatlesTmpl' type='text/x-jquery-tmpl'>
+        
+           <td>
+            <img src= '${"http://fe.it-academy.by" +imagefile}' alt= '${name}' title= '${name}'>
+            <div class='SName'> Название: <span> ${name} </span></div>
+            <div class='SYear'> Год выхода: <span> ${year} </span></div>
+            <div class='SPlace'>
+              {{if place!=''}}
+              RollingStone: <span> ${place} </span>
+              {{/if}}
+            </div>
+          </td>
+       
+    </script> 
+
+    <script>
+     $(document).ready(function() {
+
+      var Albums = [
+                { imagefile:  '/Examples/Beatles/Please_Please_Me.jpg',
+                  name: 'Please Please Me',
+                  year: '1963',
+                  place: 39},
+                
+                { imagefile:  '/Examples/Beatles/With_the_Beatles.jpg',
+                  name: 'With The Beatles',
+                  year: '1963',
+                  place: 59},
+
+                { imagefile:  '/Examples/Beatles/A_Hard_Day&apos;s_Night.jpg',
+                  name: 'A Hard Day\'s Night',
+                  year: '1964',
+                  place: 307},
+
+                { imagefile:  '/Examples/Beatles/Beatles_for_Sale.jpeg',
+                  name: 'Beatles for Sale',
+                  year: '1964',
+                  place: ''},
+
+                { imagefile:  '/Examples/Beatles/Help!.jpg',
+                  name: 'Help!',
+                  year: '1965',
+                  place: '331'}, 
+
+                { imagefile:  '/Examples/Beatles/Rubber_Soul.jpg',
+                  name: 'Rubber Soul',
+                  year: '1965',
+                  place: '5'}, 
+
+                { imagefile:  '/Examples/Beatles/Revolver.jpg',
+                  name: 'Revolver',
+                  year: '1966',
+                  place: ''}, 
+                  
+                { imagefile:  '/Examples/Beatles/Sgt._Pepper&apos;s_Lonely_Hearts_Club_Band.jpg',
+                  name: 'Sgt. Pepper\'s Lonely Hearts Club Band',
+                  year: '1967',
+                  place: '1'}, 
+
+                { imagefile:  '/Examples/Beatles/Magical_Mystery_Tour.jpg',
+                  name: 'Magical Mystery Tour',
+                  year: '1967',
+                  place: ''}, 
+
+                { imagefile:  '/Examples/Beatles/The_White_Album.png',
+                  name: 'The Beatles (White Album)',
+                  year: '1968',
+                  place: '10'}, 
+
+                { imagefile:  '/Examples/Beatles/Yellow_Submarine.jpg',
+                  name: 'Yellow Submarine',
+                  year: '1969',
+                  place: ''}, 
+
+                { imagefile:  '/Examples/Beatles/Abbey_Road.jpg',
+                  name: 'Abbey Road',
+                  year: '1969',
+                  place: '14'} 
+              ];
+      $('#BeatlesTmpl').tmpl(Albums).appendTo('.SAlbums');
+   
+console.log($('td:nth-child(4n'));
+console.log($('.SAlbums').children('td').filter(':lt(4)'));
+
+while($('.SAlbums').children('td').length){
+  $('.SAlbums').children('td:lt(4)').wrapAll('<tr></tr>');
+}
+
+});
+
+    </script>
+
+    <br>Примечание: <span class='SPlace'>RollingStone</span> &mdash; позиция альбома в списке 500 величайших альбомов всех времён по версии журнала Rolling Stone.
+
+  </body>
+</html>
